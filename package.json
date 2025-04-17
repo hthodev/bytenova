@@ -1,0 +1,8 @@
+{
+    "type": "module",
+    "dependencies": {
+        "chalk": "^5.4.1",
+        "ethers": "^6.13.5",
+        "https-proxy-agent": "^7.0.6"
+    }
+}

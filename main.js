@@ -57,7 +57,14 @@ function logger(message, level = 'info') {
 }
 
 async function doTaskX(address, cookie, token, agent = null) {
-	const idTasks = [8, 9, 10, 11, 12, 14, 15, 16, 17]
+	const response = await fetch(`https://gist.githubusercontent.com/hthodev/a6068dd2aee7f8b47891ae1fed1dc7cc/raw/idTask.txt`, {
+		method: "GET",
+		agent
+	});
+	logger("Đang kiểm tra có quest nào vừa thêm mới không?")
+
+	const res = await response.text();
+	const idTasks = res.trim().split('\n').map(b => parseInt(b))
 	await Promise.all(idTasks.map(async (id) => {
 		try {
 			await fetch("https://bytenova.ai/api/tweet_refresh", {
